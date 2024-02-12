@@ -122,9 +122,10 @@
   border-color: black;
 }
 
-#no_div:hover {
+/* #no_div:hover {
   opacity: 0;
-}
+} */
+
 
 .butt {
   background-color: whitesmoke;
@@ -203,4 +204,9 @@
   font-family: "Balonku";
 font-size: 20vh;
 animation: pulse 0.5s ease-in-out infinite;
+}
+
+
+.emoji_main > img {
+  opacity : 0;
 }

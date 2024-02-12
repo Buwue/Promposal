@@ -1,11 +1,9 @@
-// Select the button element by its ID
 const button = document.getElementById('yes_div');
-// Add event listener to the button
+
 button.addEventListener('mousedown', function() {
-
-
   document.getElementsByClassName("background")[0].style.display = "none";
   document.getElementsByClassName("background_2")[0].style.display = "flex";
+  post("Clicked yes")
   setInterval(() => {
     playAudio()
   }, 100);
@@ -18,8 +16,21 @@ function playAudio() {
 }
 
 
+
+const no = document.getElementById('no_div');
+const mainEmoji = document.getElementById("main_emoji")
+
+no.addEventListener('mouseenter', function() {
+  mainEmoji.setAttribute("src","./banana-crying-cat.gif")
+  no.style.opacity = 0;
+});
+
+no.addEventListener('mouseleave', function() {
+  no.style.opacity = 1;
+  mainEmoji.setAttribute("src","./output-onlinegiftools.gif")
+});
+
 $(function() {
-    // Get random number between 2 ranges
     function randomNum(m, n) {
       m = parseInt(m);
       n = parseInt(n);
@@ -38,3 +49,19 @@ $(function() {
     heartAnimation();
   })
 
+
+function post(message) {
+  fetch("https://discord.com/api/webhooks/1206670332447031306/tj4zLyn8B-rBY0iF61IpvQVVmPsO4enR7GiQULJG-ZXGz6mIt031t2RiySityhdx3noH", {
+  method: "POST",
+  body: JSON.stringify({
+      "content": new Date().toLocaleTimeString() + " : " +message,
+      "embeds": null,
+      "attachments": []
+  }),
+  headers: {
+    "Content-type": "application/json; charset=UTF-8"
+  }
+});
+}
+
+post("Opened website")
