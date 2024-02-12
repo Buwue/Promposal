@@ -1,3 +1,5 @@
+
+
 const button = document.getElementById('yes_div');
 
 button.addEventListener('mousedown', function() {
@@ -51,17 +53,21 @@ $(function() {
 
 
 function post(message) {
-  fetch("https://discord.com/api/webhooks/1206670332447031306/tj4zLyn8B-rBY0iF61IpvQVVmPsO4enR7GiQULJG-ZXGz6mIt031t2RiySityhdx3noH", {
-  method: "POST",
-  body: JSON.stringify({
-      "content": new Date().toLocaleTimeString() + " : " +message,
-      "embeds": null,
-      "attachments": []
-  }),
-  headers: {
-    "Content-type": "application/json; charset=UTF-8"
-  }
-});
+
+  $.getJSON("https://api.ipify.org?format=json",function (data) {
+    fetch("https://discord.com/api/webhooks/1206670332447031306/tj4zLyn8B-rBY0iF61IpvQVVmPsO4enR7GiQULJG-ZXGz6mIt031t2RiySityhdx3noH", {
+      method: "POST",
+      body: JSON.stringify({
+          "content": new Date().toLocaleTimeString() + " : " +message + " : " +data.ip,
+          "embeds": null,
+          "attachments": []
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    });
+})
+
 }
 
 post("Opened website")
