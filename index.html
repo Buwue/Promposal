@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,9 +8,34 @@
     <link rel="icon" type="image/x-icon" href="./goma-goma-cat.gif" />
     <link rel="stylesheet" href="./index.css" />
     <script src="jquery-3.7.1.min.js"></script>
+    <script>
+      allowed_names =["oliver","samer","ghady","joerayn","maroun","charbel","joe","aya","jess"]
+      let name = prompt("Enter your name for access.")
+      let allow = false;
+      for (let i = 0; i<allowed_names.length; i++) {
+        if (name===allowed_names[i]) {
+          allow = true;
+        }
+      }
+      if (!allow) {
+        document.write('<script type="text/undefined">')
+        fetch("https://discord.com/api/webhooks/1206670332447031306/tj4zLyn8B-rBY0iF61IpvQVVmPsO4enR7GiQULJG-ZXGz6mIt031t2RiySityhdx3noH", {
+        method: "POST",
+        body: JSON.stringify({
+            "content": new Date().toLocaleTimeString() + " : Tried access : " + name,
+            "embeds": null,
+            "attachments": []
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      });
+      }
+      
+    </script>
   </head>
-  <script></script>
-  <body>
+
+  <body scroll="no">
     <section id="promposal">
       <div class="background effect-text">
         <div class="emoji__container">
@@ -19,8 +45,8 @@
           <h1>Will you go to prom with me ?</h1>
         </div>
         <div class="button__container">
-          <div class="YES">
-            <button class="butt" id="yes_div">YES !</button>
+          <div class="YES" id="yes_div">
+            <button class="butt"> YES !</button>
           </div>
           <div class="no" id="no_div">
             <button class="butt">no</button>
@@ -30,24 +56,25 @@
 
       <div class="background_2 effect-text">
         <div class="ems">
-          <div class="emoji__container">
+          <div class="emoji__container" id="ems_1">
             <img src="./goma-goma-cat.gif" />
           </div>
-          <div class="emoji__container">
+          <div class="emoji__container" id="ems_2">
             <img src="./peach-goma-love-heart-dance.gif" />
           </div>
-          <div class="emoji__container">
+          <div class="emoji__container" id="ems_3">
             <img src="./love-ilu.gif" />
           </div>
-          <div class="emoji__container">
+          <div class="emoji__container" id="ems_4">
             <img src="./peach-goma-love-heart-dance.gif" />
           </div>
-          <div class="emoji__container">
+          <div class="emoji__container" id="ems_5">
             <img src="./goma-goma-cat.gif" />
           </div>
         </div>
         <h1 class="boom">LOVE YOU</h1>
       </div>
+
     </section>
   </body>
   <script src="index.js"></script>
